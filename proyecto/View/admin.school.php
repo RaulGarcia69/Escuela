@@ -132,6 +132,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
     }
         echo "</div>";
         unset($_SESSION["modificar_alu"]);
+        echo "<div id='pagina' class='desactivar'>";
         }
         
    ?>

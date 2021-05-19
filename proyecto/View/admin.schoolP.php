@@ -126,6 +126,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
         }
         echo "</div>";
         unset($_SESSION["modificar_prof"]);
+        echo "<div id='pagina' class='desactivar'>";
     }
         
    ?>
