@@ -241,8 +241,8 @@ $conexion = mysqli_connect("localhost","root","","curs");
         <form METHOD='POST' action='../conect/eliminar.actualizar.php'>
         <input type='hidden' name='id' value=<?php echo"{$registro['id_alumne']}";?>>
         <td>
-            <input type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar?')"class="btn btn-danger">
-            <input type='submit' value='Modificar' name="modificar" class='btn btn-primary'>
+            <button type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar?')"class="btn btn-danger"><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Eliminar</span></button>
+            <button type='submit' value='Modificar' name="modificar" class='btn btn-primary'><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Modificar</span></button>
         </td>
         </form>
         </tr>
@@ -262,59 +262,3 @@ else{
 </body>
 </html>
 
-<style type="text/css">
-    @media only screen and (max-width:600px) {
-    body {
-        padding: 0%;
-        width: 100%;
-    }
-    
-        
-    .hola {
-        width: 50%;
-        padding-left: 20px;
-    }
-
-    .log_out {
-        width: 40%;
-        padding-bottom: 3px;
-    }
-
-    .log_out img {
-        width: 35%;
-        padding-right: 20px;
-    }
-
-    tr {
-        width: 100%;
-    }   
-    .libro {
-        padding-left: 20px;
-        text-align: left;
-    }
-    .filtro {
-        padding-left: 20px;
-        width: 100%;
-        text-align: left;
-    }
-
-    .crear_libro {
-        width: 80%;
-        padding: 3%;
-        position: center;
-    }
-
-    body h1 {
-        font-size: 35px;
-    }
-
-    body h2 {
-        font-size: 17px;
-    }
-
-    .letra {
-        font-size: 15px;
-    }
-    
-}
-</style>

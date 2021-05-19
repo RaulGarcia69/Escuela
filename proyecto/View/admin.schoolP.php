@@ -227,8 +227,8 @@ $conexion = mysqli_connect("localhost","root","","curs");
         <form METHOD='POST' action='../conect/eliminar.actualizarprof.php'>
         <input type='hidden' name='id' value=<?php echo"{$registro['id_professor']}";?>>
         <td>
-            <input type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar?')"class="btn btn-danger">
-            <input type='submit' value='Modificar' name="modificar" class='btn btn-primary'>
+            <button type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar?')"class="btn btn-danger"><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Eliminar</span></button>
+            <button type='submit' value='Modificar' name="modificar" class='btn btn-primary'><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Modificar</span></button>
         </td>
         </form>
         </tr>

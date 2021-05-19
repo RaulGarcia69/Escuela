@@ -203,7 +203,7 @@ body {
 
 
 .table {
-    border-bottom: 5pt solid rgb(190, 152, 101);
+    border-bottom: 5pt solid #0077b3;
 }
 
 
@@ -213,18 +213,20 @@ body {
 
 tr {
     border-spacing: 0px 20px;
-    border-left: 8pt solid rgb(190, 152, 101);
-    border-right: 8pt solid rgb(190, 152, 101);
-    border-top: 2pt solid rgb(190, 152, 101);
-    background-color: rgb(236, 222, 204);
+    border-left: 8pt solid #0077b3;
+    border-right: 8pt solid #0077b3;
+    border-top: 2pt solid #0077b3;
+    background-color: #b3e6ff;
     text-align: center;
+    
     
     
 }
 
 th {
     font-size: 1vw;
-    background-color: rgb(190, 152, 101);
+    background-color: #0077b3;
+    color: white;
 }
 
 
@@ -243,7 +245,7 @@ body h1 {
     padding-top: 5px;
     text-align: left;
     width: 50%;
-    background-color: rgb(190, 152, 101);
+    background-color: #0077b3;
     font-size: 14px;
     padding-left: 10px;
     color: white;
@@ -253,7 +255,7 @@ body h1 {
     padding-top: 5px;
     padding-left: 10px;
     color: white;
-    background-color: rgb(190, 152, 101);;
+    background-color: #0077b3;
     position: center;
     text-align: right;
     width: 50%;
@@ -293,6 +295,10 @@ body h1 {
 }
 
 @media only screen and (max-width:600px) {
+    .btn>i{font-size:10px}
+    .btn{padding:6px}
+    
+    
     body {
         padding: 0%;
         width: 100%;
