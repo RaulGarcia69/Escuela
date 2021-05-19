@@ -1,0 +1,162 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-image: url("../img/login.jpg");
+    background-size: cover;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/*estilos de navegación*/
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*clases de columnas*/
+
+.login {
+    border: 1px solid black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding:2%;
+    border-radius: 10px;  
+}
+
+
+.login h1{
+font-size: 4vw;
+font-family: 'Crimson Text', serif;
+}
+
+.login h2{
+    font-size: 2vw;
+    
+}
+
+input {
+    height: 50px;
+    width: 16.5vw;
+    border: none;
+    border-bottom: 3px solid black;
+    font-size: 1.5vw;
+    transition: 0.5s;
+}
+
+input:focus {
+    outline: none;
+}
+
+.placeholder:hover::-webkit-input-placeholder {
+    color: transparent;
+    transition: 0.5s;
+}
+
+.placeholder::-webkit-input-placeholder {
+    transition: 0.5s;
+}
+
+
+#enviar {
+    width: 10vw;
+    transition: 0.5s;
+
+}
+
+#enviar:hover {
+    font-size: 1vw;
+    transition: 0.5s;
+
+}
+
+#enviar:focus {
+    background-color: #1d7595;
+    color: white;
+
+}
+
+
+/*quitar la barra de scroll*/
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.incorrecto {
+    border-bottom: 3px solid red;
+    
+}
+
+.incorrecto::placeholder {
+  color: red;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width:600px) {
+    body {
+        background-size: cover;
+    }
+    .login {
+        width: 80%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding:3%;
+        border-radius: 10px;  
+    }
+    .login h1{
+        font-size: 9vw;
+    }
+    .login h2{
+        font-size: 4.5vw;
+        
+    }
+    
+    input {
+    height: 30px;
+    width: 45vw;
+    border: none;
+    border-bottom: 3px solid black;
+    font-size: 4vw;
+    text-align: center;
+    transition: 0.5s;
+    margin-bottom: 5vw;
+}
+
+#enviar {
+    width: 40%;
+    font-size: 3vw;
+
+}
+
+#enviar:hover {
+    font-size: 2.5vw;
+    transition: 0.5s;
+
+}
+    
+
+}
