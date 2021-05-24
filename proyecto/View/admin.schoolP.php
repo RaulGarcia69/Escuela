@@ -21,10 +21,12 @@ $conexion = mysqli_connect("localhost","root","","curs");
         <!--CREAR-->
     <div class="form-style-2 nover" id="crear">
     <?php
+    $sql_depart="SELECT tbl_dept.codi_dept from tbl_dept;";
+    $resultado_crear=mysqli_query($conexion,$sql_depart);
     echo "<div class='form-style-2-heading'>Crear profesor";
     echo "<a onclick='closeForm()' id='cerrar-crear'><img src='../img/cerrar.png'></a>";
     echo "</div>";
-    echo "<form action='../conect/crear.profesor.php' method='post' id='form-crear'>";
+    echo "<form action='../conect/crear.profesor.php' method='post' id='form-crear' onsubmit='return validarp()'>";
     echo "<div class='labels'>";
     echo "<label>Nombre</label>";
     echo "<label>Primer Apellido</label>";
@@ -34,12 +36,16 @@ $conexion = mysqli_connect("localhost","root","","curs");
     echo "<label>Departamento</label>"; 
     echo "</div>";
     echo "<div class='inputs'>";
-    echo "<input type='text' class='input-field' name='nombre' required></input>";
-    echo "<input type='text' class='input-field' name='primerapellido' required></input>";
-    echo "<input type='text' class='input-field' name='segundoapellido' required></input>";
-    echo "<input type='text' class='input-field' name='telefono' required></input>";
-    echo "<input type='text' class='input-field' name='email' required></input>";
-    echo "<input type='text' class='input-field' name='departamento' required></input>";
+    echo "<input type='text' class='input-field' name='nombre' id='nombre-crear'></input>";
+    echo "<input type='text' class='input-field' name='primerapellido' id='primerapellido-crear'></input>";
+    echo "<input type='text' class='input-field' name='segundoapellido' id='segundoapellido-crear'></input>";
+    echo "<input type='text' class='input-field' name='telefono' id='telefono-crear'></input>";
+    echo "<input type='text' class='input-field' name='email' id='email-crear'></input>";
+    echo "<select class='select-field' name='departamento' id='depart-crear'>";
+    foreach ($resultado_crear as $depart){
+        echo "<option value='{$depart['codi_dept']}'>{$depart['codi_dept']}</option>";
+    }
+    echo "</select>";
     echo "</div>";
     echo "<INPUT TYPE='SUBMIT' VALUE='Crear' class='btn btn-secondary' id='crear-boton'>";
     echo "</form>";
@@ -71,7 +77,12 @@ $conexion = mysqli_connect("localhost","root","","curs");
     echo "<input type='text' class='input-field' name='segundoapellido'></input>";
     echo "<input type='text' class='input-field' name='telefono'></input>";
     echo "<input type='text' class='input-field' name='email' ></input>";
-    echo "<input type='text' class='input-field' name='departamento'></input>";
+    echo "<input type='checkbox' onclick='activar()' id='checkbox'>";
+    echo "<select class='select-field-f' name='departamento' id='depart-filtro' disabled>";
+    foreach ($resultado_crear as $depart){
+        echo "<option value='{$depart['codi_dept']}'>{$depart['codi_dept']}</option>";
+    }
+     echo "</select>";
     echo "</div>";
     echo "<INPUT TYPE='SUBMIT' VALUE='Filtrar' class='btn btn-secondary' id='filtrar-boton'>";
     echo "</form>"; 
@@ -99,7 +110,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
         echo "<div class='form-style-2-heading'>Modificar";
         echo "<a onclick='closeForm()' id='cerrar-modificar'><img src='../img/cerrar.png'></a>";
         echo "</div>";
-        echo "<form action='../conect/actualizarp.php' method='post' id='form-modificar'>";
+        echo "<form action='../conect/actualizarp.php' method='post' id='form-modificar' onsubmit='return validarpmod()'>";
         echo "<div class='labels'>";
         echo "<label>Nombre</label>";
         echo "<label>Primer Apellido</label>";
@@ -114,12 +125,19 @@ $conexion = mysqli_connect("localhost","root","","curs");
         {
             echo "<div class='inputs'>";
             echo "<input type='hidden' name='id' value='$id'>";
-            echo "<input type='text' class='input-field' name='nombre' value='$alumne_mod[nom_prof]' required></input>";
-            echo "<input type='text' class='input-field' name='primerapellido'  value='$alumne_mod[cognom1_prof]' required></input>";
-            echo "<input type='text' class='input-field' name='segundoapellido'  value='$alumne_mod[cognom2_prof]' required></input>";
-            echo "<input type='text' class='input-field' name='telefono'  value='$alumne_mod[telf]' required></input>";
-            echo "<input type='text' class='input-field' name='email'  value='$alumne_mod[email_prof]' required></input>";
-            echo "<input type='text' class='input-field' name='departamento'  value='$alumne_mod[codi_dept]' required></input>";
+            echo "<input type='text' class='input-field' name='nombre' value='$alumne_mod[nom_prof]' id='nombre-mod'></input>";
+            echo "<input type='text' class='input-field' name='primerapellido'  value='$alumne_mod[cognom1_prof]' id='primerapellido-mod'></input>";
+            echo "<input type='text' class='input-field' name='segundoapellido'  value='$alumne_mod[cognom2_prof]' id='segundoapellido-mod'></input>";
+            echo "<input type='text' class='input-field' name='telefono'  value='$alumne_mod[telf]' id='telefono-mod'></input>";
+            echo "<input type='text' class='input-field' name='email'  value='$alumne_mod[email_prof]' id='email-mod'></input>";
+            $sql_depart="SELECT tbl_dept.codi_dept from tbl_dept where tbl_dept.codi_dept<>'{$alumne_mod['codi_dept']}';";
+            $resultado_crear=mysqli_query($conexion,$sql_depart);
+            echo "<select class='select-field' name='departamento' id='depart-mod'>";
+            echo "<option value='{$alumne_mod['codi_dept']}'>{$alumne_mod['codi_dept']}</option>";
+            foreach ($resultado_crear as $depart){
+                echo "<option value='{$depart['codi_dept']}'>{$depart['codi_dept']}</option>";
+            }
+            echo "</select>";
             echo "</div>";
             echo "<INPUT TYPE='SUBMIT' VALUE='Modificar' class='btn btn-secondary' id='modificar-boton'>";
             echo "</form>";
@@ -227,7 +245,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
         <form METHOD='POST' action='../conect/eliminar.actualizarprof.php'>
         <input type='hidden' name='id' value=<?php echo"{$registro['id_professor']}";?>>
         <td>
-            <button type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar?')"class="btn btn-danger"><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Eliminar</span></button>
+            <button type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar a <?php echo"{$registro['nom_prof']}" ?>?')"class="btn btn-danger"><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Eliminar</span></button>
             <button type='submit' value='Modificar' name="modificar" class='btn btn-primary'><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Modificar</span></button>
         </td>
         </form>

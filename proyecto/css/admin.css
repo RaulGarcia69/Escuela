@@ -1,60 +1,75 @@
-
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-        background: linear-gradient(277deg, #0d5673, #e0761a);
-    background-size: 400% 400%;
-
-    -webkit-animation: AnimationName 19s ease infinite;
-    -moz-animation: AnimationName 19s ease infinite;
-    -o-animation: AnimationName 19s ease infinite;
-    animation: AnimationName 19s ease infinite;
+    background: rgb(63, 94, 251);
+    background-image: linear-gradient(95deg, #cecc67 0, #d6c45e 7.14%, #ddbb55 14.29%, #e4b14d 21.43%, #e9a546 28.57%, #ed9841 35.71%, #f08a3e 42.86%, #f2793c 50%, #f3673d 57.14%, #f45442 64.29%, #f34049 71.43%, #f22953 78.57%, #f0005e 85.71%, #ec006b 92.86%, #e60079 100%);
     padding-left: 120px;
-    padding-right: 120px; 
+    padding-right: 120px;
 }
+
 
 /*Cantidad de registros*/
 
 .cantidad {
     font-weight: bolder;
-    font-size: 1vw;
+    font-size: 1.2vw;
+    padding-bottom: 0.5vw;
+    background-color: #0077b3;
+    padding-left: 10px;
+    padding-top: 8px;
+    padding-right: 10px;
+    color: white;
+    border: 3px solid #005580;
 }
+
 
 /*Filtro*/
+
 .nover {
-   display: none; 
+    display: none;
 }
-
-
 
 .form-style-2 {
-  
-  position: fixed;
-  top: 8vw;
-  right: 35vw;
-  max-width: 500px;
-  padding: 10px 3px 10px 40px;
-  background-color: #505c74;
-  border-radius: 8px;
-  z-index: 9;
-  border: 3px solid black;
-  color: white;
-
+    position: fixed;
+    top: 8vw;
+    right: 35vw;
+    max-width: 33%;
+    padding: 0.7% 0.4% 0.8% 2.5%;
+    background-color: #505c74;
+    border-radius: 8px;
+    z-index: 9;
+    border: 3px solid black;
+    color: white;
 }
 
-.form-style-2-heading{
+form::placeholder {
+  color: red;
+}
+
+#cerrar-filtro img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 57%;
+    margin-bottom: 1vw;
+}
+
+
+
+.form-style-2-heading {
     font-weight: bold;
-    padding-bottom: 3px;
+    padding-bottom: 1%;
     font-size: 1.8vw;
 }
+
 .form-style-2-heading img {
     width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-left: 265px;
+    margin-left: 53%;
     margin-bottom: 1vw;
 }
 
@@ -62,10 +77,9 @@ body {
     opacity: 0.5;
 }
 
-
-.form-style-2 label{
+.form-style-2 label {
     display: block;
-    margin: 0px 0px 15px 0px;
+    margin: 0px 0px 8% 0px;
     font-size: 1.3vw;
 }
 
@@ -75,11 +89,10 @@ body {
     font-size: 1.3vw;
 }
 
-
 .inputs input {
-    margin-left: 10px;
-    margin-bottom: 15.8px;
-    padding: 2px 50px 2px 5px;
+    margin-left: 4%;
+    margin-bottom: 7%;
+    padding: 1% 23% 1% 2%;
     border: none;
     outline: none;
     border-bottom: 3px solid white;
@@ -93,7 +106,6 @@ body {
 
 .inputs input:hover {
     outline: none;
-
 }
 
 .labels {
@@ -108,10 +120,60 @@ body {
     width: 50%;
     border-top: 4px solid #ddd;
     padding-top: 1.3vw;
+}
+
+.select-field {
+    background-color: #505c74;
+    margin-left: 10vw;
+    padding: 5%;
+    border: 3px solid white;
+    transition: 0.5s;
 
 }
 
+.select-field:hover {
+    cursor: pointer;
+    background-color: #495469;
+    transition: 0.5s;
+}
 
+.select-field-f {
+    background-color: #505c74;
+    margin-left: 2.1vw;
+    padding: 5%;
+    border: 3px solid white;
+    transition: 0.5s;
+
+}
+
+.select-field-af {
+    background-color: #505c74;
+    margin-left: 1vw;
+    padding: 5%;
+    border: 3px solid white;
+    transition: 0.5s;
+
+}
+
+.inputs input[type="checkbox"] {
+    margin-left: 6vw;
+    width: 1.5vw;
+    height: 1.5vw;
+}
+
+.select-field-a {
+    background-color: #505c74;
+    margin-left: 9vw;
+    padding: 5%;
+    border: 3px solid white;
+    transition: 0.5s;
+}
+
+.select-field-a:hover {
+    cursor: pointer;
+    background-color: #495469;
+    transition: 0.5s;
+}
 
 /*Modificar*/
 
@@ -125,11 +187,11 @@ body {
     font-size: 1.3vw;
 }
 
-#cerrar-modificar img{
-            width: 20px;
+#cerrar-modificar img {
+    width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-left: 295px;
+    margin-left: 65%;
     margin-bottom: 1vw;
 }
 
@@ -143,69 +205,55 @@ body {
 }
 
 #cerrar-crear img {
-        width: 20px;
+    width: 20px;
     height: 20px;
     cursor: pointer;
-    margin-left: 235px;
+    margin-left: 53%;
     margin-bottom: 1vw;
 }
-
-
 
 
 /*Desactiva los elementos*/
 
 .desactivar {
-     opacity: 0.4;
-     pointer-events: none;
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 
 /*Fondo animado*/
 
 @-webkit-keyframes AnimationName {
-    0%{background-position:0% 60%}
-    50%{background-position:100% 41%}
-    100%{background-position:0% 60%}
+    0% {
+        background-position: 0% 60%
+    }
+    50% {
+        background-position: 100% 41%
+    }
+    100% {
+        background-position: 0% 60%
+    }
 }
-@-moz-keyframes AnimationName {
-    0%{background-position:0% 60%}
-    50%{background-position:100% 41%}
-    100%{background-position:0% 60%}
-}
-@-o-keyframes AnimationName {
-    0%{background-position:0% 60%}
-    50%{background-position:100% 41%}
-    100%{background-position:0% 60%}
-}
-@keyframes AnimationName {
-    0%{background-position:0% 60%}
-    50%{background-position:100% 41%}
-    100%{background-position:0% 60%}
-}
-
 
 
 .filtro {
     position: center;
     text-align: right;
-    padding-top: 10px;
+    padding-top: 1%;
     width: 50%;
-    padding-bottom: 10px;
+    padding-bottom: 1%;
 }
 
 .libro {
     text-align: left;
-    padding-top: 10px;
+    padding-top: 1.2%;
     width: 50%;
-    padding-bottom: 10px;
+    padding-bottom: 1.5%;
 }
-
 
 .table {
     border-bottom: 5pt solid #0077b3;
 }
-
 
 .centro {
     text-align: center;
@@ -216,11 +264,8 @@ tr {
     border-left: 8pt solid #0077b3;
     border-right: 8pt solid #0077b3;
     border-top: 2pt solid #0077b3;
-    background-color: #b3e6ff;
+    background-image: radial-gradient(circle at 50% -20.71%, #e4ffff 0, #daffff 25%, #cde5f2 50%, #bdc4c8 75%, #aca6a1 100%);
     text-align: center;
-    
-    
-    
 }
 
 th {
@@ -229,7 +274,6 @@ th {
     color: white;
 }
 
-
 td {
     font-size: 1vw;
 }
@@ -237,36 +281,44 @@ td {
 body h1 {
     font-weight: bold;
     font-size: 40px;
-    padding-left: 10px;
+    padding-left: 1vw;
 }
 
 .hola {
     position: center;
-    padding-top: 5px;
-    text-align: left;
-    width: 50%;
-    background-color: #0077b3;
-    font-size: 14px;
-    padding-left: 10px;
+    padding-top: 1%;
+    text-align: right;
+    width: 60%;
+    background-color: #005580;
+    font-size: 1.5vw;
+    padding-left: 1%;
     color: white;
+    border-left: 5px solid #0077b3;
+    border-bottom: 5px solid #0077b3;
 }
 
+
 .log_out {
-    padding-top: 5px;
-    padding-left: 10px;
+    padding-top: 1%;
+    padding-left: 1%;
     color: white;
-    background-color: #0077b3;
+    background-color: #005580;
     position: center;
     text-align: right;
-    width: 50%;
-    padding-right: 10px;
+    width: 40%;
+    padding-right: 1%;
+    border-right: 5px solid #0077b3;
+    border-bottom: 5px solid #0077b3;
+    
+}
+
+a.log_out {
+    border: none;
 }
 
 .log_out img {
-    width: 3%;
+    width: 6%;
 }
-
-
 
 .letra {
     font-size: 25px;
@@ -279,13 +331,13 @@ body h1 {
     text-align: left;
     transform: translate(-50%, -50%);
     background-color: white;
-    padding:2%;
+    padding: 2%;
     border-radius: 10px;
 }
 
 .btn_crear {
     width: 100%;
-    padding-top: 20px;
+    padding-top: 2%;
     position: left;
     text-align: center;
 }
@@ -294,34 +346,42 @@ body h1 {
     display: none;
 }
 
+
+.incorrecto {
+    border-bottom: 3px solid red;
+    
+}
+
+.incorrecto::placeholder {
+  color: red;
+}
+
 @media only screen and (max-width:600px) {
-    .btn>i{font-size:10px}
-    .btn{padding:6px}
-    
-    
+    .btn>i {
+        font-size: 10px
+    }
+    .btn {
+        padding: 6px
+    }
     body {
         padding: 0%;
         width: 100%;
     }
-    
     .hola {
         width: 50%;
         padding-left: 20px;
     }
-
     .log_out {
         width: 40%;
         padding-bottom: 3px;
     }
-
     .log_out img {
         width: 35%;
         padding-right: 20px;
     }
-
     tr {
         width: 100%;
-    }   
+    }
     .libro {
         padding-left: 20px;
         text-align: left;
@@ -331,24 +391,18 @@ body h1 {
         width: 100%;
         text-align: left;
     }
-
     .crear_libro {
         width: 80%;
         padding: 3%;
         position: center;
     }
-
     body h1 {
         font-size: 35px;
     }
-
     body h2 {
         font-size: 17px;
     }
-
     .letra {
         font-size: 15px;
     }
 }
-
-

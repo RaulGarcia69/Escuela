@@ -21,10 +21,12 @@ $conexion = mysqli_connect("localhost","root","","curs");
         <!--CREAR-->
     <div class="form-style-2 nover" id="crear">
     <?php
+    $sql_clase="SELECT tbl_classe.codi_classe from tbl_classe;";
+    $resultado_crear=mysqli_query($conexion,$sql_clase);
     echo "<div class='form-style-2-heading'>Crear alumno";
     echo "<a onclick='closeForm()' id='cerrar-crear'><img src='../img/cerrar.png'></a>";
     echo "</div>";
-    echo "<form action='../conect/crear.alumno.php' method='post' id='form-crear'>";
+    echo "<form action='../conect/crear.alumno.php' method='post' id='form-crear' onsubmit='return validar()'>";
     echo "<div class='labels'>";
     echo "<label>Nombre</label>";
     echo "<label>Primer Apellido</label>";
@@ -35,13 +37,17 @@ $conexion = mysqli_connect("localhost","root","","curs");
     echo "<label>Clase</label>"; 
     echo "</div>";
     echo "<div class='inputs'>";
-    echo "<input type='text' class='input-field' name='nombre' required></input>";
-    echo "<input type='text' class='input-field' name='primerapellido' required></input>";
-    echo "<input type='text' class='input-field' name='segundoapellido' required></input>";
-    echo "<input type='text' class='input-field' name='dni' required></input>";
-    echo "<input type='text' class='input-field' name='telefono' required></input>";
-    echo "<input type='text' class='input-field' name='email' required></input>";
-    echo "<input type='text' class='input-field' name='clase' required></input>";
+    echo "<input type='text' class='input-field' name='nombre' id='nombre-crear'></input>";
+    echo "<input type='text' class='input-field' name='primerapellido' id='primerapellido-crear'></input>";
+    echo "<input type='text' class='input-field' name='segundoapellido' id='segundoapellido-crear'></input>";
+    echo "<input type='text' class='input-field' name='dni' id='dni-crear'></input>";
+    echo "<input type='text' class='input-field' name='telefono' id='telefono-crear'></input>";
+    echo "<input type='text' class='input-field' name='email' id='email-crear'></input>";
+    echo "<select class='select-field-a' name='clase' id='clase-crear'>";
+    foreach ($resultado_crear as $clase){
+        echo "<option value='{$clase['codi_classe']}'>{$clase['codi_classe']}</option>";
+    }
+    echo "</select>";
     echo "</div>";
     echo "<INPUT TYPE='SUBMIT' VALUE='Crear' class='btn btn-secondary' id='crear-boton'>";
     echo "</form>";
@@ -53,7 +59,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
     
      <?php
     echo "<div class='form-style-2-heading'>Filtrar datos";
-    echo "<a onclick='closeForm()'><img src='../img/cerrar.png'></a>";
+    echo "<a onclick='closeForm()' id='cerrar-filtro'><img src='../img/cerrar.png' ></a>";
     echo "</div>";
     echo "<form action='admin.school.php' method='post' id='form-filtro'>";
     echo "<div class='labels'>";
@@ -75,7 +81,12 @@ $conexion = mysqli_connect("localhost","root","","curs");
     echo "<input type='text' class='input-field' name='dni'></input>";
     echo "<input type='text' class='input-field' name='telefono'></input>";
     echo "<input type='text' class='input-field' name='email'></input>";
-    echo "<input type='text' class='input-field' name='clase'></input>";
+    echo "<input type='checkbox' onclick='activara()' id='checkbox'>";
+    echo "<select class='select-field-af' name='clase' id='clase-filtro' disabled>";
+    foreach ($resultado_crear as $clase){
+        echo "<option value='{$clase['codi_classe']}'>{$clase['codi_classe']}</option>";
+    }
+    echo "</select>";
     echo "</div>";
     echo "<INPUT TYPE='SUBMIT' VALUE='Filtrar' class='btn btn-secondary' id='filtrar-boton'>";
     echo "</form>"; 
@@ -103,7 +114,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
         echo "<div class='form-style-2-heading'>Modificar";
         echo "<a onclick='closeForm()' id='cerrar-modificar'><img src='../img/cerrar.png'></a>";
         echo "</div>";
-        echo "<form action='../conect/actualizar.php' method='post' id='form-modificar'>";
+        echo "<form action='../conect/actualizar.php' method='post' id='form-modificar' onsubmit='return validarmod()'>";
         echo "<div class='labels'>";
         echo "<label>Nombre</label>";
         echo "<label>Primer Apellido</label>";
@@ -119,13 +130,20 @@ $conexion = mysqli_connect("localhost","root","","curs");
         {
             echo "<div class='inputs'>";
             echo "<input type='hidden' name='id' value='$id'>";
-            echo "<input type='text' class='input-field' name='nombre' value='$alumne_mod[nom_alu]' required></input>";
-            echo "<input type='text' class='input-field' name='primerapellido'  value='$alumne_mod[cognom1_alu]' required></input>";
-            echo "<input type='text' class='input-field' name='segundoapellido'  value='$alumne_mod[cognom2_alu]' required></input>";
-            echo "<input type='text' class='input-field' name='dni'  value='$alumne_mod[dni_alu]' required></input>";
-            echo "<input type='text' class='input-field' name='telefono'  value='$alumne_mod[telf_alu]' required></input>";
-            echo "<input type='text' class='input-field' name='email'  value='$alumne_mod[email_alu]' required></input>";
-            echo "<input type='text' class='input-field' name='clase'  value='$alumne_mod[codi_classe]' required></input>";
+            echo "<input type='text' class='input-field' name='nombre' value='$alumne_mod[nom_alu]' id='nombre-mod'></input>";
+            echo "<input type='text' class='input-field' name='primerapellido'  value='$alumne_mod[cognom1_alu]' id='primerapellido-mod'></input>";
+            echo "<input type='text' class='input-field' name='segundoapellido'  value='$alumne_mod[cognom2_alu]' id='segundoapellido-mod'></input>";
+            echo "<input type='text' class='input-field' name='dni'  value='$alumne_mod[dni_alu]' id='dni-mod'></input>";
+            echo "<input type='text' class='input-field' name='telefono'  value='$alumne_mod[telf_alu]' id='telefono-mod'></input>";
+            echo "<input type='text' class='input-field' name='email'  value='$alumne_mod[email_alu]' id='email-mod'></input>";
+            $sql_clase="SELECT tbl_classe.codi_classe from tbl_classe where tbl_classe.codi_classe<>'{$alumne_mod['codi_classe']}';";
+            $resultado_crear=mysqli_query($conexion,$sql_clase);
+            echo "<select class='select-field-a' name='clase' id='clase-mod'>";
+            echo "<option value='{$alumne_mod['codi_classe']}'>{$alumne_mod['codi_classe']}</option>";
+            foreach ($resultado_crear as $clase){
+                echo "<option value='{$clase['codi_classe']}'>{$clase['codi_classe']}</option>";
+            }
+            echo "</select>";
             echo "</div>";
             echo "<INPUT TYPE='SUBMIT' VALUE='Modificar' class='btn btn-secondary' id='modificar-boton'>";
             echo "</form>";
@@ -138,7 +156,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
    ?>
 <div id="pagina">
 <div class="row">
-<div class="hola"><p>Hola <?php echo $_SESSION['email']?></div>
+<div class="hola"><p>Bienvenido <?php echo $_SESSION['email']?></div>
 <div class="log_out"><a href='../conect/Kill.php' class="log_out"><img src="../img/salir.png"/></a></div>
 </div>
 <div class="row">
@@ -241,7 +259,7 @@ $conexion = mysqli_connect("localhost","root","","curs");
         <form METHOD='POST' action='../conect/eliminar.actualizar.php'>
         <input type='hidden' name='id' value=<?php echo"{$registro['id_alumne']}";?>>
         <td>
-            <button type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar?')"class="btn btn-danger"><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Eliminar</span></button>
+            <button type='submit' value='Eliminar' onclick="return confirm('Quieres Eliminar a <?php echo"{$registro['nom_alu']}" ?>?')"class="btn btn-danger"><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Eliminar</span></button>
             <button type='submit' value='Modificar' name="modificar" class='btn btn-primary'><i class="fas fa-adjust d-sm-none"></i><span class="d-none d-sm-inline">Modificar</span></button>
         </td>
         </form>
